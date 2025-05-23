@@ -1,3 +1,5 @@
+# Menu de sushi
+
 import time
 global productos 
 global subtotal
