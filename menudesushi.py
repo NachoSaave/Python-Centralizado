@@ -41,6 +41,7 @@ def pagar():
                 pagar()
                 boleta()
             case 2:
+                total=subtotal
                 boleta()       
 def boleta():
     print(f'''
