@@ -1,13 +1,7 @@
 # Menu de sushi
 
 import time
-global productos 
-global subtotal
-global pr
-global otr
-global pvr
-global aer 
-global total
+global productos , subtotal, pr, otr, pvr, aer, total
 descuento="soyotaku"
 descuento1=0
 productos=0
