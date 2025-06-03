@@ -14,14 +14,7 @@ pvr=0
 aer=0
 
 def pagar():
-    global subtotal
-    global total
-    global descuento1
-    global productos
-    global pr
-    global otr
-    global pvr
-    global aer 
+    global productos , subtotal, pr, otr, pvr, aer, total
     codigo=input("Ingrese código de descuento: ")
     if codigo==descuento:
         print(f"Descuento activado de 10%.")
@@ -52,13 +45,7 @@ def boleta():
     TOTAL: ${total}
     ''')
 def menu():
-    global subtotal
-    global total
-    global productos
-    global pr
-    global otr
-    global pvr
-    global aer 
+    global productos , subtotal, pr, otr, pvr, aer, total
     while True:
         rolls=int(input('''Que desea llevar?
                         1. Pikachu Roll $4500
