@@ -61,5 +61,4 @@ def menu():
                 break
             case _:
                 print("Opción inválida")
-
 menu()
