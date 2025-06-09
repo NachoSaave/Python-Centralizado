@@ -26,10 +26,15 @@ while True:
             for i in productos:
                 print(f"{cont}.- {i}")
                 cont+=1
-            aux=int(input("Ingrese el nombre del producto que desea eliminar: "))-1
-            productos.pop(aux)
-            print(f"{nombre_productos} eliminado de la lista de productos")
-            system("cls")
+            while True:
+                try:
+                    aux=int(input("Ingrese el nombre del producto que desea eliminar: "))-1
+                    productos.pop(aux)
+                    print(f"{nombre_productos} eliminado de la lista de productos")
+                    system("cls")
+                    break
+                except Exception:
+                    print("Introduzca un valor que corresponda")
         case 3:
             print("Mostrando productos...")
             time.sleep(1)
