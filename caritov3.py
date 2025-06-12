@@ -18,7 +18,7 @@ while True:
                 agregar=input("Que producto desea agregar?: ")
                 precio_producto=int(input("Ingrese valor del producto: "))
                 productos.append(agregar)
-                precio.append(precio)
+                precio.append(precio_producto)
                 print(f"Usted agregó {agregar}: {precio_producto}")
             except Exception as e:
                 print(f"Error {e}")
