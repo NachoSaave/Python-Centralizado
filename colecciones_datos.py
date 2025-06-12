@@ -31,3 +31,6 @@ diccionario = {"nombre": "Jose Saavedra",
                   988877776,
                   998887837],
                 "activo": True}
+
+# for lista in nombre_lista:
+#     print("nota: ",lista+1)
