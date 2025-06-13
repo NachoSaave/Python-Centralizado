@@ -21,7 +21,6 @@ diccionario={
 # items() es la funcion que permite desplegar el valor del diccionario, se debe usar siempre que lo quiera recorrer.
 # for key, value in diccionario.items():
 #     print(key, value)
-
 frutas={
     "Manzana": 1500,
     "Frutilla": 1600,
