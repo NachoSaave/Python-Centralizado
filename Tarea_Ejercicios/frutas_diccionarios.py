@@ -17,6 +17,8 @@ while True:
                 val=input("Que valor lleva esta fruta?: ")
                 frutas[fru]=val 
             case 2:
-                frutas=
+                frutas=#ccc
+            case 3:
+                fru_borrar=input("")
     except Exception as e:
         print(f"Print error {e}")
