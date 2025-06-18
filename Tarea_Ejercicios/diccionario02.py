@@ -18,8 +18,8 @@
 
 
 
-
 #CONTINUAR
+import time
 productos=[
     {}
 ]
@@ -44,6 +44,8 @@ while True:
                     borrar=int(input("Ingrese el número del producto que desea eliminar"))
                     print(f"El producto {borrar} se ha eliminado de la lista")
                     productos.pop(borrar-1)
+                    print("Producto borrado exitosamente")
+                    time.sleep(1)
                 except Exception as er:
                     print(e)
             case 3:
@@ -51,10 +53,12 @@ while True:
                     print("Productos y precios")
                     for i in range(len(productos)):
                         print(f"{[i+1]} {productos[i]}")
-                    actualizar=int(input("Ingrese el producto que quiere actualizar"))
-                    productos[actualizar-1]["Nombre"]=input("Ingrese el producto que quiere actualizar")
-                    productos[actualizar-1]["Precio"]=int(input("Ingrese e producto que quiere actualizar"))
-                except Exception as err:
+                    actualizar=int(input("Ingrese el número del producto que quiere actualizar"))
+                    productos[actualizar-1]["Nombre"]=input("Ingrese el nuevo nombre del producto que va a actualizar")
+                    productos[actualizar-1]["Precio"]=int(input("Ingrese el nuevo precio del artículo actualizado"))
+                    print("Elemento actualizado correctamente")
+                    time.sleep(1)
+                except Exception as err:    
                     print(err)
             case 4:
                 print("Productos y precios")
