@@ -13,47 +13,85 @@ juegos={
     }
 }
 
-# nombre=input("Ingrese el nombre del juego: ")
-# precio=int(input("Precio del juego $"))
-# code=input("Ingrese código: ")
+# '''
+# el codigo debe tener 2 mayusculas,
+# 2 minusculas y 4 numeros
+# '''
 
-# juegos[4]={
-#     "Nombre":nombre,
-#     "Precio":precio,
-#     "Code":code
-# }
-# for j, datos in juegos.items():
-#     print(j, datos)
+def mostrar_juegos(dic):
+    for j, datos in dic.items():
+        print(j, datos)
 
-# print(juegos[2]["Precio"]) #Dentro de juegos, 2do key muestra valor "Precio"
-def mostrar(dic):
-    for j, datos in juegos.items():
-                    print(j, datos)
+def valida_code(clave):
+    Mayuscula=0
+    Minuscula=0
+    Numero=0
+    for palabra in clave:
+        if palabra.isupper():
+            Mayuscula+=1
+        if palabra.islower():
+            Minuscula+=1
+        if palabra.isdigit():
+            Numero+=1
+    if Mayuscula==2 and Minuscula==2 and Numero==4 :
+        print("El codigo está bien escrito")
+        return True
+    else:
+        print("El codigo está mal escrito")
+        return False
 def borrar(dic):
      mostrar(dic)
      borrar=int(input("Que elemento desea eliminar: "))
      del juegos[borrar]
-def actualizar(dic):
-     mostrar(dic)
-     act=int(input("Seleccione juego a actualizar: "))
-     while True:
-        print('''
-              1.- Nombre
-              2.- Precio
-              3.- Código
-              4.- Salir
-            ''')
-        op=int(input("Que dato va a actualizar?: "))
-        match op:
+def act_juegos(dic):
+    mostrar(dic)
+    act=int(input("Seleccione el juego a actulizar: "))
+    while True:
+        print('''1.- Nombre
+                2.- Precio
+                3.- Codigo
+                4.- Salir''')
+        dato=int(input("que dato va a actualizar?: "))
+        match dato:
             case 1:
-                n=input("Ingrese nuevo nombre: ")
-                dic[act]["Nombre"]=n
+                n=input("ingrese el nuevo nombre")
+                dic[act]["nombre"]=n
             case 2:
-                  #upudpate precio
+                n=int(input("ingrese la nueva raza"))
+                dic[act]["precio"]=n
+            case 3:
+                n=input("ingrese el nuevo codigo")
+                if valida_code(n):
+                    dic[act]["codigo"]=n
+                else:
+                    print("el parametro del codigo no es correcto")
+                    print('''
+                    el codigo debe tener, 2 mayusculas, 
+                    2 minusculas y 4 numeros ''')
             case 4:
                 break
             case _:
-                  print("Iválido")      
+                    print("Opcion invalida")  
+def ingresar(dic):
+    while True:
+        nombre=input("Ingrese el nombre del juego: ")
+        if valida_nombre(nombre):
+            break
+        else:
+            print("nombre invalido, intenta nuevamente")
+            nombre=input("Ingrese el nombre del juego: ")
+    precio=int(input("Ingrese el precio: "))
+    code=input("Ingres el codigo: ")
+    if valida_code(code):
+        largo=list(dic.keys())[-1]
+        dic[largo+1]={
+                "nombre":nombre,
+                "precio": precio,
+                "code":code
+            }
+    else:
+        print("el codigo es invalido, intenta de nuevo")
+
 while True:
     try:
         print('''
@@ -66,15 +104,7 @@ while True:
         opc=int(input("Seleccione una opción: "))
         match opc:
             case 1:
-                nombre=input("Ingrese el nombre del juego: ")
-                precio=int(input("Precio del juego $"))
-                code=input("Ingrese código: ")
-                largo=len(juegos)
-                juegos[largo+1]={
-                "Nombre":nombre,
-                "Precio":precio,
-                "Code":code
-                }
+                ingresar(juego)
             case 2:
                 mostrar(juegos)                
             case 3:
