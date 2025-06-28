@@ -55,9 +55,6 @@ def cancelar(dic):
         print("Compra cancelada exitosamente.")
     else:
         print("No se encontró una compra en esa posición.")
-
-    
-
 def salir():
     print("Terminando programa...")
     exit()
