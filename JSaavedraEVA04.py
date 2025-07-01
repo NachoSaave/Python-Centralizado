@@ -1,43 +1,74 @@
 entradas={
-
+    1:{
+        'Nombre':"Chris",
+        'Tipo':"G",
+        'Codigo':"Kodig9"
+    }
 }
-largo=1
+  # Código para validación de existencia en diccionario
+# name="Chris"
+# for k, v in entradas.items():
+#     if v["Nombre"]==name:
+#         print("Existe")
+#     else:
+#         print("No existe")
+#     print(v["Nombre"])
+#     print(k,v)
+
+if entradas:
+    largo=max(entradas.keys())+1
+else:
+    largo=1
+
 def validarCodigo(codigo):
-    minus=0
+    mayus=0
     digit=0
-    if len(codigo)!=6:
+    space=0
+    if len(codigo)<6:
         return False
     for i in codigo:
-        if i.islower():
-            minus+=1
+        if i.isupper():
+            mayus+=1
+        elif i==" ":
+            space+=1
         elif i.isdigit():
             digit+=1
-    if minus>=1 and digit>=1:
+    if mayus>=1 and digit>=1 and space==0:
         return True
     else:
         return False
+
 def comprar(dic):
     global largo
-    nombre=input("Ingrese su nombre: ")
-    if nombre not in entradas:
-        print("Nombre confirmado")
-    else:
-        print("Nombre ya inscrito")
-    tipoEntrada=input("Que tipo de entrada desea llevar? (G o V): ")
-    if tipoEntrada=='G' or tipoEntrada=='V':
-        print("Entrada comprada exitosamente")
-    else:
-        print("Intente de nuevo")
-    codigo=input("Entre su código de confirmación: ")
-    if not validarCodigo(codigo):
-        print("Código inválido. Compra no realizada.")
-        return
-    entradas[largo]={
-        'Nombre':nombre,
-        'Tipo':tipoEntrada,
-        'Codigo':codigo
-    }
-    largo+1
+    while True:
+        nombre=input("Ingrese su nombre: ")
+        if nombre not in entradas:
+            print("Nombre ya inscrito")
+        else:
+            print("Nombre confirmado")
+            break
+    while True:
+        tipoEntrada=input("Que tipo de entrada desea llevar? (G o V): ")
+        if tipoEntrada=='G' or tipoEntrada=='V':
+            print("Entrada comprada exitosamente")
+            break
+        else:
+            print("Intente de nuevo")
+    while True:
+        codigo=input("Entre su código de confirmación: ")
+        if not validarCodigo(codigo):
+            print("Código inválido. Compra no realizada.")
+            return
+        else:
+            entradas[largo]={
+                'Nombre':nombre,
+                'Tipo':tipoEntrada,
+                'Codigo':codigo
+            }
+            largo+1
+            break
+
+
 def consultar(dic):
     nombreBuscar=input("Ingrese el nombre que desea buscar: ")
     print("Compras encontradas:")
@@ -48,13 +79,15 @@ def consultar(dic):
             encontrado=True
     if not encontrado:
         print("No se encontraron compras para ese nombre.")
+
 def cancelar(dic):
-    op=int(input("Seleccione la posición de la compra que desea borrar: "))
+    op=int(input("Seleccione la posición de la compra que desea borrar (Debe consultar su nombre antes, para poder ve su posición): "))
     if op in dic:
         del dic[op]
         print("Compra cancelada exitosamente.")
     else:
         print("No se encontró una compra en esa posición.")
+
 def salir():
     print("Terminando programa...")
     exit()
