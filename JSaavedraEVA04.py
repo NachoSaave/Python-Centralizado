@@ -1,3 +1,5 @@
+import time
+import sys
 entradas={
     1:{
         'Nombre':"Chris",
@@ -8,7 +10,7 @@ entradas={
   # Código para validación de existencia en diccionario
 # name="Chris"
 # for k, v in entradas.items():
-#     if v["Nombre"]==name:
+#     if v["Nombre"]==nombre:
 #         print("Existe")
 #     else:
 #         print("No existe")
@@ -41,37 +43,45 @@ def validarCodigo(codigo):
 def comprar(dic):
     global largo
     while True:
-        nombre=input("Ingrese su nombre: ")
-        if nombre not in entradas:
-            print("Nombre ya inscrito")
-        else:
-            print("Nombre confirmado")
-            break
+        nombre=input("Ingrese su nombre: ") #Hay que aplicar elemento en línea 9-16
+        for k, v in entradas.items():
+            if v["Nombre"]==nombre:
+                print("Este nombre ya está inscrito, debe intentar otro diferente")
+                return
+            else:
+                time.sleep(1)
+                print(f"Nombre {nombre} inscrito exitosamente!")
+                time.sleep(1)
+        break
     while True:
         tipoEntrada=input("Que tipo de entrada desea llevar? (G o V): ")
         if tipoEntrada=='G' or tipoEntrada=='V':
-            print("Entrada comprada exitosamente")
+            time.sleep(1)
             break
         else:
             print("Intente de nuevo")
     while True:
         codigo=input("Entre su código de confirmación: ")
+        time.sleep(1)
         if not validarCodigo(codigo):
             print("Código inválido. Compra no realizada.")
             return
         else:
+            print("Código verificado")
             entradas[largo]={
                 'Nombre':nombre,
                 'Tipo':tipoEntrada,
                 'Codigo':codigo
             }
             largo+1
+            time.sleep(1)
             break
-
 
 def consultar(dic):
     nombreBuscar=input("Ingrese el nombre que desea buscar: ")
+    time.sleep(3)
     print("Compras encontradas:")
+    time.sleep(1)
     encontrado=False
     for indice, detalles in entradas.items():
         if detalles['Nombre']==nombreBuscar:
@@ -81,7 +91,8 @@ def consultar(dic):
         print("No se encontraron compras para ese nombre.")
 
 def cancelar(dic):
-    op=int(input("Seleccione la posición de la compra que desea borrar (Debe consultar su nombre antes, para poder ve su posición): "))
+    op=int(input("Seleccione la posición de la compra que desea borrar (Debe consultar su nombre antes, para poder ver su posición): "))
+    time.sleep(1)
     if op in dic:
         del dic[op]
         print("Compra cancelada exitosamente.")
@@ -90,6 +101,7 @@ def cancelar(dic):
 
 def salir():
     print("Terminando programa...")
+    time.sleep(3)
     exit()
 
 while True:
